@@ -1,26 +1,59 @@
+// 路由器对象模块
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Home from '../views/Home.vue'
-
+import MSite from '../pages/MSite/MSite.vue'
+import Order from '../pages/Order/Order.vue'
+import Profile from '../pages/Profile/Profile.vue'
+import Search from '../pages/Search/Search.vue'
+import Login from '../pages/Login/Login.vue'
+//  声明要使用的插件
 Vue.use(VueRouter)
 
+// 创建一个路由数组
 const routes = [
+  // 默认显示的路由
   {
     path: '/',
-    name: 'Home',
-    component: Home
+    redirect: MSite
+  },
+  // --
+  {
+    path: '/msite',
+    component: MSite,
+    meta: {
+      showFooter: true
+    }
   },
   {
-    path: '/about',
-    name: 'About',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
+    path: '/search',
+    component: Search,
+    meta: {
+      showFooter: true
+    }
+  },
+  {
+    path: '/profile',
+    component: Profile,
+    meta: {
+      showFooter: true
+    }
+  },
+  {
+    path: '/order',
+    component: Order,
+    meta: {
+      showFooter: true
+    }
+  },
+  {
+    path: '/login',
+    component: Login
   }
 ]
 
+// 配置实例路由对象
 const router = new VueRouter({
+  // 数组
   routes
 })
 
